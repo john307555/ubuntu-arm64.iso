@@ -8,74 +8,95 @@
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      text-align: center;
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: #000;
       color: #fff;
+      background-color: #000;
     }
 
-    /* Electrodynamix-inspired moving pattern */
     .background {
       position: absolute;
       top: 0;
       left: 0;
-      width: 200%;
-      height: 200%;
-      background: repeating-linear-gradient(
-        -45deg,
-        #ff6f61,
-        #ff6f61 10px,
-        #6c63ff 10px,
-        #6c63ff 20px,
-        #6bc1ff 20px,
-        #6bc1ff 30px
-      );
-      animation: patternMove 4s linear infinite;
-      z-index: -2;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
     }
 
-    @keyframes patternMove {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-50px, 50px); }
+    .ubuntu-logo {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background-image: url('https://assets.ubuntu.com/v1/29985a98-ubuntu-logo32.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: float 15s linear infinite;
+      filter: drop-shadow(0px 0px 10px rgba(255, 255, 255, 0.6));
     }
 
-    /* Glowing and visible text containers */
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 30px auto;
-      max-width: 600px;
-      text-align: left;
+    /* Keyframe animation for moving logos */
+    @keyframes float {
+      0% {
+        transform: translate(-10%, -10%) rotate(0deg);
+      }
+      50% {
+        transform: translate(110%, 110%) rotate(180deg);
+      }
+      100% {
+        transform: translate(-10%, -10%) rotate(360deg);
+      }
     }
 
-    ul li {
-      font-size: 1.3rem;
-      margin: 15px 0;
-      background: rgba(255, 255, 255, 0.1);
-      color: #e1e1e1;
-      padding: 15px;
-      border-radius: 5px;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+    /* Multiple instances of logos */
+    .ubuntu-logo:nth-child(1) {
+      top: 5%;
+      left: 10%;
+      animation-duration: 12s;
+    }
+
+    .ubuntu-logo:nth-child(2) {
+      top: 20%;
+      left: 50%;
+      animation-duration: 16s;
+    }
+
+    .ubuntu-logo:nth-child(3) {
+      top: 50%;
+      left: 70%;
+      animation-duration: 14s;
+    }
+
+    .ubuntu-logo:nth-child(4) {
+      top: 80%;
+      left: 30%;
+      animation-duration: 18s;
+    }
+
+    .ubuntu-logo:nth-child(5) {
+      top: 60%;
+      left: 10%;
+      animation-duration: 20s;
     }
 
     h1 {
       margin-top: 50px;
-      font-size: 3.5rem;
+      font-size: 3rem;
       text-transform: lowercase;
-      animation: glowText 2s ease-in-out infinite alternate;
+      text-align: center;
+      color: #ff6f61;
+      text-shadow: 0 0 10px #ff6f61, 0 0 20px #6c63ff;
     }
 
     p {
-      font-size: 1.5rem;
-      margin: 20px 0;
+      font-size: 1.2rem;
+      text-align: center;
     }
 
     .download-button {
       display: inline-block;
-      background: linear-gradient(90deg, #ff6f61, #6c63ff, #6bc1ff);
+      background: linear-gradient(90deg, #ff6f61, #6c63ff);
       color: #fff;
       padding: 15px 30px;
       font-size: 1.5rem;
@@ -84,6 +105,7 @@
       border-radius: 5px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 20px;
     }
 
     .download-button:hover {
@@ -96,15 +118,31 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    @keyframes glowText {
-      0% { text-shadow: 0 0 10px #ff6f61, 0 0 20px #6c63ff, 0 0 30px #6bc1ff; }
-      100% { text-shadow: 0 0 20px #ff6f61, 0 0 30px #6c63ff, 0 0 40px #6bc1ff; }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px auto;
+      max-width: 600px;
+      text-align: left;
+    }
+
+    ul li {
+      font-size: 1.1rem;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
   </style>
 </head>
 <body>
-  <!-- Moving background -->
-  <div class="background"></div>
+  <div class="background">
+    <div class="ubuntu-logo"></div>
+    <div class="ubuntu-logo"></div>
+    <div class="ubuntu-logo"></div>
+    <div class="ubuntu-logo"></div>
+    <div class="ubuntu-logo"></div>
+  </div>
 
   <h1>ubuntu arm64 iso file</h1>
   <p>click the button below to download the ubuntu arm64 iso file.</p>
