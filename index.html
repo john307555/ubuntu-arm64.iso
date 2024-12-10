@@ -12,44 +12,36 @@
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: #1a1a1a;
-      color: #ffffff;
+      background-color: #000;
+      color: #fff;
     }
 
-    /* Moving background pattern */
+    /* Electrodynamix-inspired moving pattern */
     .background {
       position: absolute;
       top: 0;
       left: 0;
       width: 200%;
       height: 200%;
-      background-image: radial-gradient(circle, rgba(0, 123, 255, 0.3) 20%, transparent 20%), 
-                        radial-gradient(circle, rgba(255, 61, 113, 0.3) 20%, transparent 20%);
-      background-size: 50px 50px;
-      animation: moveBackground 10s linear infinite;
-      z-index: -1;
+      background: repeating-linear-gradient(
+        -45deg,
+        #ff6f61,
+        #ff6f61 10px,
+        #6c63ff 10px,
+        #6c63ff 20px,
+        #6bc1ff 20px,
+        #6bc1ff 30px
+      );
+      animation: patternMove 4s linear infinite;
+      z-index: -2;
     }
 
-    @keyframes moveBackground {
-      0% {
-        transform: translate(0, 0);
-      }
-      100% {
-        transform: translate(-25%, -25%);
-      }
+    @keyframes patternMove {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-50px, 50px); }
     }
 
-    h1 {
-      margin-top: 50px;
-      font-size: 3rem;
-      text-transform: lowercase;
-    }
-
-    p {
-      font-size: 1.3rem;
-      margin: 20px 0;
-    }
-
+    /* Glowing and visible text containers */
     ul {
       list-style: none;
       padding: 0;
@@ -59,20 +51,34 @@
     }
 
     ul li {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin: 15px 0;
       background: rgba(255, 255, 255, 0.1);
+      color: #e1e1e1;
       padding: 15px;
       border-radius: 5px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      margin-top: 50px;
+      font-size: 3.5rem;
+      text-transform: lowercase;
+      animation: glowText 2s ease-in-out infinite alternate;
+    }
+
+    p {
+      font-size: 1.5rem;
+      margin: 20px 0;
     }
 
     .download-button {
       display: inline-block;
-      background: linear-gradient(45deg, #007BFF, #6c63ff);
+      background: linear-gradient(90deg, #ff6f61, #6c63ff, #6bc1ff);
       color: #fff;
       padding: 15px 30px;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       font-weight: bold;
       text-decoration: none;
       border-radius: 5px;
@@ -90,9 +96,9 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     }
 
-    h2 {
-      margin-top: 40px;
-      font-size: 2rem;
+    @keyframes glowText {
+      0% { text-shadow: 0 0 10px #ff6f61, 0 0 20px #6c63ff, 0 0 30px #6bc1ff; }
+      100% { text-shadow: 0 0 20px #ff6f61, 0 0 30px #6c63ff, 0 0 40px #6bc1ff; }
     }
   </style>
 </head>
